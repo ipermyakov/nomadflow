@@ -1,0 +1,36 @@
+bash submit_train_h100.sh 8 14 \
+    domain=protein \
+    paradigm=multiframefm \
+    datamodule.batch_size=3 \
+    datamodule.num_workers=8 \
+    model.c_s=768 \
+    model.c_cond=768 \
+    model.c_frame=256 \
+    model.c_framepair=64 \
+    model.z_broadcast=true \
+    model.rigid_transformer_num_blocks=1 \
+    model.rigid_transformer_rigid_updates=true \
+    model.use_embedder_sc_rigid_transformer=true \
+    model.use_ipa_gating=true \
+    model.use_qk_norm=true \
+    model.use_amp=true \
+    model.rot_preconditioning=true \
+    model.num_blocks=12 \
+    lmodule.use_ema=true \
+    corrupter.use_stochastic_centering=true \
+    corrupter.center_on_motif=true \
+    corrupter.sig_perturb=4 \
+    dataset.config=configs/train/data/afdb_512_clusters_motif_crop320.yaml \
+    experiment.lightning.devices=8 \
+    experiment.lightning.strategy=ddp_find_unused_parameters_true \
+    experiment.checkpointer.train_time_interval=null \
+    experiment.checkpointer.every_n_train_steps=20000 \
+    experiment.lightning.gradient_clip_val=5.0 \
+    experiment.lightning.accumulate_grad_batches=2 \
+    hydra.run.dir="./outputs/finetune/motif_phase1_2" \
+    experiment.warm_start="./outputs/finetune/motif_phase1_1/lightning_logs/version_0/checkpoints/last.ckpt" \
+    lmodule.lr_step_decay_start=720000 \
+    lmodule.lr_step_decay_step=20000 \
+    lmodule.lr_step_decay_factor=0.95 \
+
+sleep 1s

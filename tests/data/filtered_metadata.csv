@@ -1,0 +1,3 @@
+pdb_name,processed_path,raw_path,num_chains,quaternary_category,seq_len,modeled_seq_len,coil_percent,helix_percent,strand_percent,radius_gyration
+d2ckxa1,data/d2ckxa1.pkl,/data/rsg/chemistry/jyim/large_data/scope/d2ckxa1.pdb,1,homomer,83,83,0.3132530120481928,0.6867469879518072,0.0,1.2216951003825536
+d1trba2,data/d1trba2.pkl,/data/rsg/chemistry/jyim/large_data/scope/d1trba2.pdb,1,homomer,126,126,0.4126984126984127,0.2777777777777778,0.30952380952380953,1.389139288945649

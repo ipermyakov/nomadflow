@@ -1,0 +1,92 @@
+# Framediff-only dataset with AFDB crop256 task mix.
+# Same tasks/probabilities as afdb_512_clusters_crop256.yaml, but single dataset.
+# Requires:
+#   export NOMADFLOW_DATA_FRAMEDIFF_BOLTZ=/path/to/framediff_boltz
+_target_: nomadflow.data.datasets.datamodule.TrainingDataset
+max_crop_residues: 256
+max_crop_rigids: 768
+use_cropper: true
+dataset_probs: [1.0]
+remove_mol_types:
+  - "DNA"
+  - "RNA"
+  - "NONPOLYMER"
+datasets:
+  - _target_: nomadflow.data.datasets.dataset.MMCIFDataset
+    data_dir: ENV:NOMADFLOW_DATA_FRAMEDIFF_BOLTZ
+    data_sampler:
+      _target_: nomadflow.boltz.data.sample.cluster.ClusterSampler
+    task_sampler:
+      _target_: nomadflow.runtime.training.task.TaskSampler
+      task_list:
+        - _target_: nomadflow.runtime.training.unconditional.UnconditionalGeneration
+          prob: 0.4
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+        - _target_: nomadflow.runtime.training.motif_scaffold.MixedMotifScaffolding
+          prob: 0.6
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+          max_frac_res: 0.5
+          max_num_res: 128
+          p_is_unindexed: 1.0
+          p_fix_tip: 0.35
+          p_fix_bb: 0.35
+          p_fix_all: 0.30
+          name_override: one_motiff
+          multi_motif_se3: true
+          multi_motif_partition_mode: fragments
+          multi_motif_max_groups: 1
+          multi_motif_se3_trans_std: 12
+          motif_t_lock: 0.5
+  - _target_: nomadflow.data.datasets.dataset.MMCIFDataset
+    data_dir: ENV:NOMADFLOW_DATA_AFDB_BOLTZ
+    data_sampler:
+      _target_: nomadflow.boltz.data.sample.cluster.ClusterSampler
+    task_sampler:
+      _target_: nomadflow.runtime.training.task.TaskSampler
+      task_list:
+        - _target_: nomadflow.runtime.training.unconditional.UnconditionalGeneration
+          prob: 0.4
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+        - _target_: nomadflow.runtime.training.motif_scaffold.MixedMotifScaffolding
+          prob: 0.6
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+          max_frac_res: 0.5
+          max_num_res: 128
+          p_is_unindexed: 1.0
+          p_fix_tip: 0.35
+          p_fix_bb: 0.35
+          p_fix_all: 0.30
+          name_override: one_motiff
+          multi_motif_se3: true
+          multi_motif_partition_mode: fragments
+          multi_motif_max_groups: 1
+          multi_motif_se3_trans_std: 12
+          motif_t_lock: 0.5

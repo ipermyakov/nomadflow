@@ -1,0 +1,18 @@
+# Motif scaffolding with an unindexed motif (RFdiffusion style).
+# contigs_idx: ""  → every motif residue is marked unindexed (see motif_scaffolding._parse_idx_str).
+# There is no sample_contigs_idx_config — that key is the indexed-positions-along-the-chain mode (see debug_indexed.yaml).
+#
+# Two contiguous segments on one chain (like pdb_contigs: "F196-212,F63-69" in 4JHW):
+# in 3IXT chain P is only 254–277, so the split is P254-265 and P266-277.
+#
+# Run from the repo root (cwd = REPO_ROOT); PDB paths are relative.
+tasks:
+  - task: motif_scaffolding
+    name: demo_motif_unindexed
+    pdb: configs/sampling/rfdiff_motif_scaffolding/pdbs/3IXT.pdb
+    pdb_contigs: "P254-260,P270-277"
+    redesign_contigs: ""
+    contigs_idx: ""
+    total_length: "50-75"
+    num_samples: 4
+    sample_chain_name: P

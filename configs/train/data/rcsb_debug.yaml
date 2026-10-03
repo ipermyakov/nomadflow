@@ -1,0 +1,25 @@
+_target_: nomadflow.data.datasets.datamodule.TrainingDataset
+max_crop_residues: 384
+max_crop_rigids: 1152
+use_cropper: true
+datasets:
+  - _target_: nomadflow.data.datasets.dataset.MMCIFDataset
+    data_dir: ENV:NOMADFLOW_DATA_RCSB_BOLTZ
+    data_sampler:
+      _target_: nomadflow.boltz.data.sample.cluster.ClusterSampler
+    task_sampler:
+      _target_: nomadflow.runtime.training.task.TaskSampler
+      task_list:
+        - _target_: nomadflow.runtime.training.unconditional.UnconditionalGeneration
+          prob: 1.0
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+    exclude_mol_types:
+      - "DNA"
+      - "RNA"

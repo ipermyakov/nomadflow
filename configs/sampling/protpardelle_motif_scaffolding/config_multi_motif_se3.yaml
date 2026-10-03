@@ -1,0 +1,303 @@
+# Per-segment motif groups for 7 non-catalytic multi-segment benchmark tasks.
+# Each pdb_contigs segment is its own SE3 group (full fragment partition).
+# 1BCF and 5YUI also include a 2-group split (adjacent segments merged by contig order).
+# Compare with config_multi_motif_se3.yaml (single group) and config.yaml (fixed).
+tasks:
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1PRW.pdb
+  pdb_contigs: A16-35,A52-71
+  motif_groups: [["A16-35"], ["A52-71"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 60-150
+  name: 1PRW
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5IUS.pdb
+  pdb_contigs: A119-140,A63-82
+  motif_groups: [["A119-140"], ["A63-82"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 57-142
+  name: 5IUS
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/2KL8.pdb
+  pdb_contigs: A1-7,A28-79
+  motif_groups: [["A1-7"], ["A28-79"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: '79'
+  name: 2KL8
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/4JHW.pdb
+  pdb_contigs: F196-212,F63-69
+  motif_groups: [["F196-212"], ["F63-69"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 60-90
+  name: 4JHW
+  sample_chain_name: F
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/6VW1.pdb
+  pdb_contigs: A24-42,A64-82
+  motif_groups: [["A24-42"], ["A64-82"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 62-83
+  name: 6VW1
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5YUI.pdb
+  pdb_contigs: A93-97,A118-120,A198-200
+  motif_groups: [["A93-97"], ["A118-120"], ["A198-200"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 50-100
+  name: 5YUI
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5YUI.pdb
+  pdb_contigs: A93-97,A118-120,A198-200
+  motif_groups: [["A93-97", "A118-120"], ["A198-200"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 50-100
+  name: 5YUI_2grp
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1BCF.pdb
+  pdb_contigs: A92-99,A123-130,A47-54,A18-25
+  motif_groups: [["A92-99"], ["A123-130"], ["A47-54"], ["A18-25"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 96-152
+  name: 1BCF
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1BCF.pdb
+  pdb_contigs: A92-99,A123-130,A47-54,A18-25
+  motif_groups: [["A92-99", "A123-130"], ["A47-54", "A18-25"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 96-152
+  name: 1BCF_2grp
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+# Catalytic benchmark tasks (single-residue motifs) and extended variants.
+# Each base task adds: ext10 (+1x~10aa), ext2x10 (+2x~10aa), ext20 (+1x~20aa).
+# motif_groups: catalytic residues in one group; each added segment is its own group.
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1QJG.pdb
+  pdb_contigs: A38,A14,A99,A22-31
+  motif_groups: [["A38", "A14", "A99"], ["A22-31"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 63-113
+  name: 1QJG_ext10
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1QJG.pdb
+  pdb_contigs: A38,A14,A99,A22-31,A103-112
+  motif_groups: [["A38", "A14", "A99"], ["A22-31"], ["A103-112"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 73-123
+  name: 1QJG_ext2x10
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1QJG.pdb
+  pdb_contigs: A38,A14,A99,A66-81
+  motif_groups: [["A38", "A14", "A99"], ["A66-81"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 73-123
+  name: 1QJG_ext16
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: A1051,A2083,A2110,A1013-1022
+  motif_groups: [["A1051", "A2083", "A2110"], ["A1013-1022"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 240-280
+  name: 5AOU_ext10
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: A1051,A2083,A2110,A1013-1022,A2068-2077
+  motif_groups: [["A1051", "A2083", "A2110"], ["A1013-1022"], ["A2068-2077"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 250-290
+  name: 5AOU_ext2x10
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: A1051,A2083,A2110,A2111-2130
+  motif_groups: [["A1051", "A2083", "A2110"], ["A2111-2130"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 250-290
+  name: 5AOU_ext20
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: A1051,A2083,A2110,A2180,A1013-1022
+  motif_groups: [["A1051", "A2083", "A2110", "A2180"], ["A1013-1022"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 240-280
+  name: 5AOU_QUAD_ext10
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: A1051,A2083,A2110,A2180,A1013-1022,A2068-2077
+  motif_groups: [["A1051", "A2083", "A2110", "A2180"], ["A1013-1022"], ["A2068-2077"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 250-290
+  name: 5AOU_QUAD_ext2x10
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: A1051,A2083,A2110,A2180,A2111-2130
+  motif_groups: [["A1051", "A2083", "A2110", "A2180"], ["A2111-2130"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 250-290
+  name: 5AOU_QUAD_ext20
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/7K4V.pdb
+  pdb_contigs: A44,A50,A127,A61-70
+  motif_groups: [["A44", "A50", "A127"], ["A61-70"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 290-330
+  name: 7K4V_ext10
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/7K4V.pdb
+  pdb_contigs: A44,A50,A127,A61-70,A82-91
+  motif_groups: [["A44", "A50", "A127"], ["A61-70"], ["A82-91"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 300-340
+  name: 7K4V_ext2x10
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/7K4V.pdb
+  pdb_contigs: A44,A50,A127,A61-80
+  motif_groups: [["A44", "A50", "A127"], ["A61-80"]]
+  contigs_idx: ''
+  num_samples: 200
+  total_length: 300-340
+  name: 7K4V_ext20
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5

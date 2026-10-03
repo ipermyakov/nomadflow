@@ -1,0 +1,4 @@
+tasks:
+- task: unconditional_smiles
+  smiles: "c12ccccc2[C@@H]2c3c([C@H]1c1c(OCCOC)c4[C@H]5c6c(cccc6)[C@H](c6c5cc5OCCOCCOCCOc7c(OCCOCCOCCOc5c6)cccc7)c4c(OCCOC)c21)cc1OCCOCCOCCOc2ccccc2OCCOCCOCCOc1c3"
+  num_samples: 1

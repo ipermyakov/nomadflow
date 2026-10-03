@@ -1,0 +1,51 @@
+# Architecture for the published motif_scaffolding_model checkpoint
+# (lightning_logs/version_0/checkpoints/epoch-3278-step-780000.ckpt).
+# The extracted weights zip on this host has no sibling .hydra/; sample.py
+# reads `model` from this file when STAGE2_MODEL_DIR points here.
+model:
+  _target_: nomadflow.model.denoiser.IpaMultiRigidDenoiser
+  c_s: 768
+  c_cond: 768
+  c_z: 128
+  c_frame: 256
+  c_framepair: 64
+  c_hidden: 16
+  c_hidden_trig: 32
+  c_hidden_trig_embedder: 64
+  num_heads: 16
+  num_qk_points: 8
+  num_v_points: 12
+  num_blocks: 12
+  trans_preconditioning: false
+  rot_preconditioning: true
+  block_q: 16
+  block_k: 64
+  use_conditioned_ipa: true
+  use_conditioned_rigid_transformer: false
+  rigid_transformer_num_blocks: 1
+  rigid_transformer_num_heads: 4
+  rigid_transformer_rigid_updates: true
+  rigid_transformer_agg_embed: true
+  rigid_transformer_add_vanilla_transformer: false
+  rigid_transformer_add_second_transformer: false
+  rigid_transformer_add_full_transformer: false
+  use_embedder_sc_rigid_transformer: true
+  rel_quat_pair_updates: false
+  z_broadcast: true
+  compile_ipa: false
+  use_ipa_gating: true
+  ablate_ipa_down_z: false
+  ipa_row_dropout_r: 0.0
+  tfmr_row_dropout_r: 0.0
+  cg_version: 1
+  use_qk_norm: true
+  use_amp: true
+  predict_final_rot: false
+  direct_rot_vf_output: false
+  learnable_noise_schedule: false
+  use_pairformer: false
+  rot_vf_scaling: 1
+  self_conditioning: true
+  self_folding: false
+  use_residue_indexing: true
+  num_registers: 0

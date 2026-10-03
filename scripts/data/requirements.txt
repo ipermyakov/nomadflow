@@ -1,0 +1,7 @@
+gemmi
+pdbeccdutils
+ijson
+redis
+scikit-learn
+p_tqdm
+tqdm

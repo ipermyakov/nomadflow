@@ -1,0 +1,52 @@
+# Framediff-only dataset with crop256 motif task mix.
+# Based on `framediff_crop256_mix.yaml`, but enables the multi-motif SE(3)
+# scheme that independently perturbs motif-group positions.
+#
+# Requires:
+#   export NOMADFLOW_DATA_FRAMEDIFF_BOLTZ=/path/to/framediff_boltz
+_target_: nomadflow.data.datasets.datamodule.ValidationDataset
+max_crop_residues: 256
+max_crop_rigids: 768
+samples_per_task: 200
+base_seed: 1234
+use_cropper: true
+dataset_probs: [1.0]
+remove_mol_types:
+  - "DNA"
+  - "RNA"
+  - "NONPOLYMER"
+datasets:
+  - _target_: nomadflow.data.datasets.dataset.MMCIFDataset
+    data_dir: ENV:NOMADFLOW_DATA_FRAMEDIFF_BOLTZ
+    data_sampler:
+      _target_: nomadflow.boltz.data.sample.cluster.ClusterSampler
+    task_sampler:
+      _target_: nomadflow.runtime.training.task.TaskSampler
+      task_list:
+        - _target_: nomadflow.runtime.training.motif_scaffold.SpatialFragmentMotifScaffolding
+          prob: 1
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+          max_frac_res: 0.5
+          max_num_res: 128
+          max_num_fragments: 8
+          min_fragment_size: 4
+          small_fragment_shell_sampling: true
+          small_fragment_shell_max_size: 6
+          small_fragment_shell_center_dist: 12.0
+          small_fragment_shell_half_width: 2.0
+          p_is_unindexed: 1.0
+          p_fix_tip: 0
+          p_fix_bb: 0
+          p_fix_all: 1
+          name_override: motif_scaffold_unindexed_128_max_motif_position_noise
+          multi_motif_se3: true
+          multi_motif_max_groups: 8
+          multi_motif_se3_trans_std: 14
+          one_fragment_one_group: true

@@ -1,0 +1,79 @@
+# Deterministic validation mirror for the opt-in Voronoi motif-crop task.
+_target_: nomadflow.data.datasets.datamodule.ValidationDataset
+max_crop_residues: 256
+max_crop_rigids: 768
+use_cropper: true
+dataset_probs: [0.25, 0.75]
+samples_per_task: 100
+base_seed: 1234
+remove_mol_types:
+  - "DNA"
+  - "RNA"
+  - "NONPOLYMER"
+datasets:
+  - _target_: nomadflow.data.datasets.dataset.MMCIFDataset
+    data_dir: ENV:NOMADFLOW_DATA_FRAMEDIFF_BOLTZ
+    data_sampler:
+      _target_: nomadflow.boltz.data.sample.cluster.ClusterSampler
+    task_sampler:
+      _target_: nomadflow.runtime.training.task.TaskSampler
+      task_list:
+        - _target_: nomadflow.runtime.training.motif_scaffold.VoronoiClusterMotifScaffolding
+          prob: 1.0
+          t_sched: uniform
+          t_min: 0.01
+          t_max: 0.2475
+          p_is_unindexed: 1.0
+          p_fix_tip: 0.0
+          p_fix_bb: 0.0
+          p_fix_all: 1.0
+          multi_motif_se3: true
+          multi_motif_se3_trans_std: 14.0
+          motif_t_lock: 0.15
+          cluster_target_res: 32
+          cluster_max_res: 40
+          p_catalytic: 0.35
+          catalytic_min_res: 3
+          catalytic_max_res: 5
+          catalytic_max_ca_dist: 12.0
+          catalytic_distance_temperature: 2.5
+          catalytic_min_cluster_segments: 2
+          structural_keep_fraction_min: 0.5
+          structural_keep_fraction_max: 1.0
+          min_motif_groups: 2
+          max_motif_groups: 5
+          p_motif_cluster: 0.5
+          min_cluster_sequence_contacts: 1
+  - _target_: nomadflow.data.datasets.dataset.MMCIFDataset
+    data_dir: ENV:NOMADFLOW_DATA_AFDB_BOLTZ
+    data_sampler:
+      _target_: nomadflow.boltz.data.sample.cluster.ClusterSampler
+    task_sampler:
+      _target_: nomadflow.runtime.training.task.TaskSampler
+      task_list:
+        - _target_: nomadflow.runtime.training.motif_scaffold.VoronoiClusterMotifScaffolding
+          prob: 1.0
+          t_sched: uniform
+          t_min: 0.01
+          t_max: 0.2475
+          p_is_unindexed: 1.0
+          p_fix_tip: 0.0
+          p_fix_bb: 0.0
+          p_fix_all: 1.0
+          multi_motif_se3: true
+          multi_motif_se3_trans_std: 14.0
+          motif_t_lock: 0.15
+          cluster_target_res: 32
+          cluster_max_res: 40
+          p_catalytic: 0.35
+          catalytic_min_res: 3
+          catalytic_max_res: 5
+          catalytic_max_ca_dist: 12.0
+          catalytic_distance_temperature: 2.5
+          catalytic_min_cluster_segments: 2
+          structural_keep_fraction_min: 0.5
+          structural_keep_fraction_max: 1.0
+          min_motif_groups: 2
+          max_motif_groups: 5
+          p_motif_cluster: 0.5
+          min_cluster_sequence_contacts: 1

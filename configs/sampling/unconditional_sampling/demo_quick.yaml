@@ -1,0 +1,6 @@
+# Minimal unconditional generation example (a quick run to check the pipeline).
+tasks:
+  - task: unconditional
+    name: demo_quick
+    sample_length: 64
+    num_samples: 2

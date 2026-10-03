@@ -1,0 +1,36 @@
+# Copy to models.yaml and fill in real model checkpoints before running benchmarks.
+models:
+  - key: proteinzen_baseline
+    label: ProteinZen baseline
+    model_dir: /path/to/baseline/run
+    checkpoint: last
+    training_budget: unknown
+    notes: Original unindexed motif-scaffolding baseline.
+
+  - key: ours_multimotif
+    label: Ours multi-motif
+    model_dir: /path/to/ours/run
+    checkpoint: last
+    training_budget: same_as_baseline
+    notes: Multi-motif-capable model used for primary experiments.
+
+  - key: ours_tlock_0_3
+    label: Ours t_lock 0.3
+    model_dir: /path/to/tlock_0_3/run
+    checkpoint: last
+    training_budget: same_as_primary
+    notes: Ablation model.
+
+  - key: ours_tlock_0_7
+    label: Ours t_lock 0.7
+    model_dir: /path/to/tlock_0_7/run
+    checkpoint: last
+    training_budget: same_as_primary
+    notes: Ablation model.
+
+  - key: ours_tlock_off
+    label: Ours no t_lock
+    model_dir: /path/to/tlock_off/run
+    checkpoint: last
+    training_budget: same_as_primary
+    notes: Ablation model.

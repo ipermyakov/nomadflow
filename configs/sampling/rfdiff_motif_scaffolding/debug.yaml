@@ -1,0 +1,44 @@
+tasks:
+# - task: motif_scaffolding
+#   pdb: configs/sampling/rfdiff_motif_scaffolding/pdbs/5TPN.pdb
+#   pdb_contigs: "A163-181"
+#   redesign_contigs: "A163-168,A170-171,A179"
+#   num_samples: 10
+#   contigs_idx: ""
+#   total_length: "50-75"
+#   name: 5TPN
+- task: motif_scaffolding
+  pdb: configs/sampling/rfdiff_motif_scaffolding/pdbs/3IXT.pdb
+  pdb_contigs: "P254-277"
+  redesign_contigs: "P255,P258-259,P262-263,P268,P271-272,P275-276"
+  num_samples: 10
+  contigs_idx: ""
+  total_length: "50-75"
+  name: 3IXT
+  sample_chain_name: P
+- task: motif_scaffolding
+  pdb: configs/sampling/rfdiff_motif_scaffolding/pdbs/4JHW.pdb
+  pdb_contigs: "F196-212,F63-69"
+  redesign_contigs: "F196,F198,F203,F211-212,F63,F69"
+  contigs_idx: ""
+  num_samples: 10
+  total_length: "60-90"
+  name: 4JHW
+  sample_chain_name: F
+# - task: motif_scaffolding
+#   pdb: configs/sampling/rfdiff_motif_scaffolding/pdbs/4ZYP.pdb
+#   pdb_contigs: "A422-436"
+#   redesign_contigs: "A422-427,A430-431,A433-436"
+#   contigs_idx: ""
+#   num_samples: 100
+#   total_length: "30-50"
+#   name: 4ZYP
+#   sample_chain_name: F
+# - task: motif_scaffolding
+#   pdb: configs/sampling/rfdiff_motif_scaffolding/pdbs/5WN9.pdb
+#   pdb_contigs: "A170-189"
+#   redesign_contigs: "A170-175,A188-189"
+#   contigs_idx: ""
+#   num_samples: 100
+#   total_length: "35-50"
+#   name: 5WN9

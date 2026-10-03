@@ -1,0 +1,64 @@
+# Copy to benchmark_matrix.yaml and edit model keys once real checkpoints are known.
+defaults:
+  num_samples_per_task: 200
+  proteinmpnn_num_seq_per_target: 8
+  proteinmpnn_sampling_temp: 0.1
+  foldseek_unique_tm_threshold: 0.5
+
+benchmarks:
+  - key: protpardelle_m1_unindexed
+    label: Protpardelle unindexed single motif
+    tasks_yaml: configs/sampling/protpardelle_motif_scaffolding/config.yaml
+    models:
+      - proteinzen_baseline
+      - ours_multimotif
+    purpose: Controlled comparison for unindexed single-motif degradation.
+
+  - key: protpardelle_m2plus_unindexed
+    label: Protpardelle unindexed multi-group
+    tasks_yaml: configs/sampling/protpardelle_motif_scaffolding/config_multi_motif_se3.yaml
+    models:
+      - ours_multimotif
+    purpose: Primary multi-motif result.
+
+  - key: protpardelle_single_rigid_group
+    label: Protpardelle same motif residues as one rigid group
+    tasks_yaml: configs/sampling/protpardelle_motif_scaffolding/config_single_rigid_group.yaml
+    models:
+      - ours_multimotif
+    purpose: Internal control for multi-group placement cost.
+
+  - key: protpardelle_indexed_sanity
+    label: Protpardelle indexed sanity check
+    tasks_yaml: configs/sampling/protpardelle_motif_scaffolding/config_indexed.yaml
+    models:
+      - ours_multimotif
+    purpose: Supplementary sanity check only.
+
+  - key: protpardelle_tlock_0_3
+    label: Protpardelle t_lock 0.3 ablation
+    tasks_yaml: configs/sampling/protpardelle_motif_scaffolding/config_multi_motif_se3.yaml
+    models:
+      - ours_tlock_0_3
+    purpose: t_lock ablation.
+
+  - key: protpardelle_tlock_0_5
+    label: Protpardelle t_lock 0.5 ablation
+    tasks_yaml: configs/sampling/protpardelle_motif_scaffolding/config_multi_motif_se3.yaml
+    models:
+      - ours_multimotif
+    purpose: Primary t_lock setting.
+
+  - key: protpardelle_tlock_0_7
+    label: Protpardelle t_lock 0.7 ablation
+    tasks_yaml: configs/sampling/protpardelle_motif_scaffolding/config_multi_motif_se3.yaml
+    models:
+      - ours_tlock_0_7
+    purpose: t_lock ablation.
+
+  - key: protpardelle_tlock_off
+    label: Protpardelle no t_lock ablation
+    tasks_yaml: configs/sampling/protpardelle_motif_scaffolding/config_multi_motif_se3.yaml
+    models:
+      - ours_tlock_off
+    purpose: t_lock ablation.

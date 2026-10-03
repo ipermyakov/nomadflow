@@ -1,0 +1,76 @@
+_target_: nomadflow.data.datasets.datamodule.TrainingDataset
+max_crop_residues: 128
+max_crop_rigids: 512
+use_cropper: true
+dataset_probs: [0.25, 0.75]
+samples_per_epoch: 2500
+remove_mol_types:
+  - "DNA"
+  - "RNA"
+  - "NONPOLYMER"
+mask_nonstandard: true
+datasets:
+  - _target_: nomadflow.data.datasets.dataset.MMCIFDataset
+    max_num_res: 160
+    count_on_protein_res: true
+    data_dir: ENV:NOMADFLOW_DATA_FRAMEDIFF_BOLTZ
+    data_sampler:
+      _target_: nomadflow.boltz.data.sample.cluster.ClusterSampler
+    task_sampler:
+      _target_: nomadflow.runtime.training.task.TaskSampler
+      task_list:
+        - _target_: nomadflow.runtime.training.motif_scaffold.MixedMotifScaffolding
+          prob: 0.8
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+          max_frac_res: 0.5
+          max_num_res: 20
+          p_is_unindexed: 1.0
+          name_override: motif_scaffold_unindexed
+        - _target_: nomadflow.runtime.training.partial_seq.PartialSequenceConditioned
+          prob: 0.2
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+  - _target_: nomadflow.data.datasets.dataset.MMCIFDataset
+    data_dir: ENV:NOMADFLOW_DATA_AFDB_128_BOLTZ
+    data_sampler:
+      _target_: nomadflow.boltz.data.sample.random.RandomSampler
+    task_sampler:
+      _target_: nomadflow.runtime.training.task.TaskSampler
+      task_list:
+        - _target_: nomadflow.runtime.training.motif_scaffold.MixedMotifScaffolding
+          prob: 0.8
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+          max_frac_res: 0.5
+          max_num_res: 20
+          p_is_unindexed: 1.0
+          name_override: motif_scaffold_unindexed
+        - _target_: nomadflow.runtime.training.partial_seq.PartialSequenceConditioned
+          prob: 0.2
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99

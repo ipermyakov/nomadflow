@@ -1,0 +1,241 @@
+tasks:
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1PRW.pdb
+  pdb_contigs: "A16-35,A52-71"
+  # redesign_contigs: : "A16-19,A21,A23,A25,A27-30,A32-35,A52-55,A57,A59,A61,A63-66,A68-71"
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "60-150"
+  name: 1PRW
+  sample_contigs_idx_config: "5-20,A16-35,10-25,A52-71,5-20"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1BCF.pdb
+  pdb_contigs: "A92-99,A123-130,A47-54,A18-25"
+  # redesign_contigs: : "A19-25,A47-50,A52-53,A92-93,A95-99,A123-126,A128-129"
+  num_samples: 200
+  contigs_idx: ""
+  total_length: "96-152"
+  name: 1BCF
+  sample_contigs_idx_config: "8-15,A92-99,16-30,A123-130,16-30,A47-54,16-30,A18-25,8-15"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5TPN.pdb
+  pdb_contigs: "A163-181"
+  # redesign_contigs: : "A163-168,A170-171,A179"
+  num_samples: 200
+  contigs_idx: ""
+  total_length: "50-75"
+  name: 5TPN
+  sample_contigs_idx_config: "10-40,A163-181,10-40"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5IUS.pdb
+  pdb_contigs: "A119-140,A63-82"
+  # redesign_contigs: : "A63,A65,A67,A69,A71,A72,A76,A79,A80,A82,A119,A120,A121,A122,A123,A125,A127,A129,A130,A131,A133,A135,A137,A138,A140"
+  num_samples: 200
+  contigs_idx: ""
+  total_length: "57-142"
+  name: 5IUS
+  sample_contigs_idx_config: "0-30,A119-140,15-40,A63-82,0-30"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/3IXT.pdb
+  pdb_contigs: "P254-277"
+  # redesign_contigs: : "P255,P258-259,P262-263,P268,P271-272,P275-276"
+  num_samples: 200
+  contigs_idx: ""
+  total_length: "50-75"
+  name: 3IXT
+  sample_chain_name: P
+  sample_contigs_idx_config: "10-40,P254-277,10-40"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5YUI.pdb
+  pdb_contigs: "A93-97,A118-120,A198-200"
+  # redesign_contigs: : "A93,A95,A97,A118,A120"
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "50-100"
+  name: 5YUI
+  sample_contigs_idx_config: "5-30,A93-97,5-20,A118-120,10-35,A198-200,10-30"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1QJG.pdb
+  pdb_contigs: "A38,A14,A99"
+  # redesign_contigs: : ""
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "53-103"
+  name: 1QJG
+  sample_contigs_idx_config: "10-20,A38,15-30,A14,15-30,A99,10-20"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1QJG.pdb
+  pdb_contigs: "A14,A38,A99"
+  # redesign_contigs: : ""
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "53-103"
+  name: 1QJG_NAT
+  sample_contigs_idx_config: "10-20,A14,15-30,A38,15-30,A99,10-20"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1YCR.pdb
+  pdb_contigs: "B19-27"
+  # redesign_contigs: : "B20-22,B24-25"
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "40-100"
+  name: 1YCR
+  sample_chain_name: B
+  sample_contigs_idx_config: "10-40,B19-27,10-40"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/2KL8.pdb
+  pdb_contigs: "A1-7,A28-79"
+  # redesign_contigs: : ""
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "79"
+  name: 2KL8
+  sample_contigs_idx_config: "A1-7,20,A28-79"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/7MRX.pdb
+  pdb_contigs: "B25-46"
+  # redesign_contigs: : ""
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "60"
+  name: 7MRX_60
+  sample_chain_name: B
+  sample_contigs_idx_config: "0-38,B25-46,0-38 "
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/7MRX.pdb
+  pdb_contigs: "B25-46"
+  # redesign_contigs: : ""
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "85"
+  name: 7MRX_85
+  sample_chain_name: B
+  sample_contigs_idx_config: "0-63,B25-46,0-63"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/7MRX.pdb
+  pdb_contigs: "B25-46"
+  # redesign_contigs: : ""
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "128"
+  name: 7MRX_128
+  sample_chain_name: B
+  sample_contigs_idx_config: "0-106,B25-46,0-122"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/4JHW.pdb
+  pdb_contigs: "F196-212,F63-69"
+  # redesign_contigs: : "F196,F198,F203,F211-212,F63,F69"
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "60-90"
+  name: 4JHW
+  sample_chain_name: F
+  sample_contigs_idx_config: "10-25,F196-212,15-30,F63-69,10-25"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/4ZYP.pdb
+  pdb_contigs: "A422-436"
+  # redesign_contigs: : "A422-427,A430-431,A433-436"
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "30-50"
+  name: 4ZYP
+  sample_contigs_idx_config: "10-35,A422-436,10-40"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5WN9.pdb
+  pdb_contigs: "A170-189"
+  # redesign_contigs: : "A170-175,A188-189"
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "35-50"
+  name: 5WN9
+  sample_contigs_idx_config: "10-30,A170-189,10-40"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/6VW1.pdb
+  pdb_contigs: "A24-42,A64-82"
+  # redesign_contigs: : "A25-26,A29-30,A32-34,A36-42,A64-82"
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "62-83"
+  name: 6VW1
+  sample_contigs_idx_config: "20-30,A24-42,4-10,A64-82,0-5"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5TRV.pdb
+  pdb_contigs: "A45-65"
+  # redesign_contigs: : ""
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "56"
+  name: 5TRV_short
+  sample_contigs_idx_config: "0-35,A45-65,0-35"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5TRV.pdb
+  pdb_contigs: "A45-65"
+  # redesign_contigs: : ""
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "86"
+  name: 5TRV_med
+  sample_contigs_idx_config: "0-65,A45-65,0-65"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5TRV.pdb
+  pdb_contigs: "A45-65"
+  # redesign_contigs: : ""
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "116"
+  name: 5TRV_long
+  sample_contigs_idx_config: "0-95,A45-65,0-95"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/6E6R.pdb
+  pdb_contigs: "A23-35"
+  # redesign_contigs: : ""
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "48"
+  name: 6E6R_short
+  sample_contigs_idx_config: "0-35,A23-35,0-35"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/6E6R.pdb
+  pdb_contigs: "A23-35"
+  # redesign_contigs: : ""
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "78"
+  name: 6E6R_med
+  sample_contigs_idx_config: "0-65,A23-35,0-65"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/6E6R.pdb
+  pdb_contigs: "A23-35"
+  # redesign_contigs: : ""
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "108"
+  name: 6E6R_long
+  sample_contigs_idx_config: "0-95,A23-35,0-5"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: "A1051,A2083,A2110"
+  # redesign_contigs: : ""
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "230-270"
+  name: 5AOU
+  sample_contigs_idx_config: "40-60,A1051,20-40,A2083,20-35,A2110,100-140"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: "A1051,A2083,A2110,A2180"
+  # redesign_contigs: : ""
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "230-270"
+  name: 5AOU_QUAD
+  sample_contigs_idx_config: "40-60,A1051,20-40,A2083,20-35,A2110,60-80,A2180,40-60"
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/7K4V.pdb
+  pdb_contigs: "A44,A50,A127"
+  # redesign_contigs: : "A25-26,A29-30,A32-34,A36-42,A64-82"
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "280-320"
+  name: 7K4V
+  sample_contigs_idx_config: "40-50,A44,3-8,A50,70-85,A127,150-200"

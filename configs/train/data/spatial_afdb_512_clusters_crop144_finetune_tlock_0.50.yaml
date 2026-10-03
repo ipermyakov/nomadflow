@@ -1,0 +1,191 @@
+# Spatial multi-motif pretrain for the published 768/12 motif-scaffolding ckpt.
+# Crop leaves room for virtual group aggregators
+# (crop_size = max_crop_residues - n_motif_groups; see datamodule prepare path).
+# SpatialFragmentMotifScaffolding + multi_motif_se3 / one_fragment_one_group
+# exercises the new motif-group / aggregator embeddings missing from that ckpt.
+_target_: nomadflow.data.datasets.datamodule.TrainingDataset
+max_crop_residues: 144
+max_crop_rigids: 768
+use_cropper: true
+dataset_probs: [0.25, 0.75]
+remove_mol_types:
+  - "DNA"
+  - "RNA"
+  - "NONPOLYMER"
+datasets:
+  - _target_: nomadflow.data.datasets.dataset.MMCIFDataset
+    data_dir: ENV:NOMADFLOW_DATA_FRAMEDIFF_BOLTZ
+    data_sampler:
+      _target_: nomadflow.boltz.data.sample.cluster.ClusterSampler
+    task_sampler:
+      _target_: nomadflow.runtime.training.task.TaskSampler
+      task_list:
+        - _target_: nomadflow.runtime.training.unconditional.UnconditionalGeneration
+          prob: 0.10
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+        - _target_: nomadflow.runtime.training.motif_scaffold.MixedMotifScaffolding
+          prob: 0.10
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+          max_frac_res: 0.5
+          max_num_res: 120
+          p_is_unindexed: 0.0
+          p_fix_tip: 0.35
+          p_fix_bb: 0.35
+          p_fix_all: 0.30
+          name_override: motif_scaffold_indexed
+        - _target_: nomadflow.runtime.training.motif_scaffold.MixedMotifScaffolding
+          prob: 0.3
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+          max_frac_res: 0.5
+          max_num_res: 120
+          p_is_unindexed: 1.0
+          p_fix_tip: 0.35
+          p_fix_bb: 0.35
+          p_fix_all: 0.30
+          name_override: motif_scaffold_unindexed
+        - _target_: nomadflow.runtime.training.motif_scaffold.DistalSeparatedMotifScaffolding
+          prob: 0.5
+          t_sched: uniform
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.495
+          p_is_unindexed: 1.0
+          p_fix_tip: 0.0
+          p_fix_bb: 0.0
+          p_fix_all: 1.0
+          name_override: motif_scaffold_unindexed_distal
+          multi_motif_se3: true
+          multi_motif_se3_trans_std: 14.0
+          motif_t_lock: 0.5
+          # Group geometry
+          min_groups: 2
+          max_groups: 5
+          min_center_dist: 18.0
+          min_inter_group_ca_dist: 8.0
+          # Catalytic vs structural
+          p_catalytic: 0.35
+          catalytic_min_res: 3
+          catalytic_max_res: 5
+          small_fragment_shell_center_dist: 10.0
+          small_fragment_shell_half_width: 3.0
+          # Structural distal segments
+          max_structural_fragments: 3
+          min_seq_gap: 15
+          structural_anchor_max_ca_dist: 14.0
+          min_fragment_size: 5
+          min_structural_res: 10
+          max_structural_res: 24
+          max_anchor_tries: 32
+  - _target_: nomadflow.data.datasets.dataset.MMCIFDataset
+    data_dir: ENV:NOMADFLOW_DATA_AFDB_BOLTZ
+    data_sampler:
+      _target_: nomadflow.boltz.data.sample.cluster.ClusterSampler
+    task_sampler:
+      _target_: nomadflow.runtime.training.task.TaskSampler
+      task_list:
+        - _target_: nomadflow.runtime.training.unconditional.UnconditionalGeneration
+          prob: 0.10
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+        - _target_: nomadflow.runtime.training.motif_scaffold.MixedMotifScaffolding
+          prob: 0.10
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+          max_frac_res: 0.5
+          max_num_res: 120
+          p_is_unindexed: 0.0
+          p_fix_tip: 0.35
+          p_fix_bb: 0.35
+          p_fix_all: 0.30
+          name_override: motif_scaffold_indexed
+        - _target_: nomadflow.runtime.training.motif_scaffold.MixedMotifScaffolding
+          prob: 0.3
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+          max_frac_res: 0.5
+          max_num_res: 120
+          p_is_unindexed: 1.0
+          p_fix_tip: 0.35
+          p_fix_bb: 0.35
+          p_fix_all: 0.30
+          name_override: motif_scaffold_unindexed
+        - _target_: nomadflow.runtime.training.motif_scaffold.DistalSeparatedMotifScaffolding
+          prob: 0.5
+          t_sched: uniform
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.495
+          p_is_unindexed: 1.0
+          p_fix_tip: 0.0
+          p_fix_bb: 0.0
+          p_fix_all: 1.0
+          name_override: motif_scaffold_unindexed_distal
+          multi_motif_se3: true
+          multi_motif_se3_trans_std: 14.0
+          motif_t_lock: 0.5
+          # Group geometry
+          min_groups: 2
+          max_groups: 5
+          min_center_dist: 18.0
+          min_inter_group_ca_dist: 8.0
+          # Catalytic vs structural
+          p_catalytic: 0.35
+          catalytic_min_res: 3
+          catalytic_max_res: 5
+          small_fragment_shell_center_dist: 10.0
+          small_fragment_shell_half_width: 3.0
+          # Structural distal segments
+          max_structural_fragments: 3
+          min_seq_gap: 15
+          structural_anchor_max_ca_dist: 14.0
+          min_fragment_size: 5
+          min_structural_res: 10
+          max_structural_res: 24
+          max_anchor_tries: 32

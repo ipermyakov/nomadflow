@@ -1,0 +1,167 @@
+# crop240 mix: unc + mixed motif + Voronoi (t_lock=0.5, t_max=0.99 so post-lock is trained). FrameDiff+AFDB.
+_target_: nomadflow.data.datasets.datamodule.TrainingDataset
+max_crop_residues: 240
+max_crop_rigids: 768
+use_cropper: true
+dataset_probs: [0.25, 0.75]
+remove_mol_types:
+  - "DNA"
+  - "RNA"
+  - "NONPOLYMER"
+datasets:
+  - _target_: nomadflow.data.datasets.dataset.MMCIFDataset
+    data_dir: ENV:NOMADFLOW_DATA_FRAMEDIFF_BOLTZ
+    data_sampler:
+      _target_: nomadflow.boltz.data.sample.cluster.ClusterSampler
+    task_sampler:
+      _target_: nomadflow.runtime.training.task.TaskSampler
+      task_list:
+        - _target_: nomadflow.runtime.training.unconditional.UnconditionalGeneration
+          prob: 0.10
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+        - _target_: nomadflow.runtime.training.motif_scaffold.MixedMotifScaffolding
+          prob: 0.10
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+          max_frac_res: 0.5
+          max_num_res: 120
+          p_is_unindexed: 0.0
+          p_fix_tip: 0.35
+          p_fix_bb: 0.35
+          p_fix_all: 0.30
+          name_override: motif_scaffold_indexed
+        - _target_: nomadflow.runtime.training.motif_scaffold.MixedMotifScaffolding
+          prob: 0.3
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+          max_frac_res: 0.5
+          max_num_res: 120
+          p_is_unindexed: 1.0
+          p_fix_tip: 0.35
+          p_fix_bb: 0.35
+          p_fix_all: 0.30
+          name_override: motif_scaffold_unindexed
+        - _target_: nomadflow.runtime.training.motif_scaffold.VoronoiClusterMotifScaffolding
+          prob: 0.5
+          t_sched: uniform
+          t_min: 0.01
+          t_max: 0.99
+          p_is_unindexed: 1.0
+          p_fix_tip: 0.0
+          p_fix_bb: 0.0
+          p_fix_all: 1.0
+          name_override: motif_scaffold_unindexed_voronoi
+          multi_motif_se3: true
+          multi_motif_se3_trans_std: 14.0
+          motif_t_lock: 0.5
+          cluster_target_res: 32
+          cluster_max_res: 40
+          p_catalytic: 0.35
+          catalytic_min_res: 3
+          catalytic_max_res: 5
+          catalytic_max_ca_dist: 11.0
+          catalytic_distance_temperature: 3.5
+          catalytic_min_cluster_segments: 2
+          structural_keep_fraction_min: 0.4
+          structural_keep_fraction_max: 0.75
+          min_motif_groups: 2
+          max_motif_groups: 10
+          p_motif_cluster: 0.8
+          min_cluster_sequence_contacts: 1
+  - _target_: nomadflow.data.datasets.dataset.MMCIFDataset
+    data_dir: ENV:NOMADFLOW_DATA_AFDB_BOLTZ
+    data_sampler:
+      _target_: nomadflow.boltz.data.sample.cluster.ClusterSampler
+    task_sampler:
+      _target_: nomadflow.runtime.training.task.TaskSampler
+      task_list:
+        - _target_: nomadflow.runtime.training.unconditional.UnconditionalGeneration
+          prob: 0.10
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+        - _target_: nomadflow.runtime.training.motif_scaffold.MixedMotifScaffolding
+          prob: 0.10
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+          max_frac_res: 0.5
+          max_num_res: 120
+          p_is_unindexed: 0.0
+          p_fix_tip: 0.35
+          p_fix_bb: 0.35
+          p_fix_all: 0.30
+          name_override: motif_scaffold_indexed
+        - _target_: nomadflow.runtime.training.motif_scaffold.MixedMotifScaffolding
+          prob: 0.3
+          t_sched: lognorm
+          lognorm_mu: 0.0
+          lognorm_sig: 1.0
+          beta_p1: 1.9
+          beta_p2: 1.0
+          shift_time_scale: false
+          t_min: 0.01
+          t_max: 0.99
+          max_frac_res: 0.5
+          max_num_res: 120
+          p_is_unindexed: 1.0
+          p_fix_tip: 0.35
+          p_fix_bb: 0.35
+          p_fix_all: 0.30
+          name_override: motif_scaffold_unindexed
+        - _target_: nomadflow.runtime.training.motif_scaffold.VoronoiClusterMotifScaffolding
+          prob: 0.5
+          t_sched: uniform
+          t_min: 0.01
+          t_max: 0.99
+          p_is_unindexed: 1.0
+          p_fix_tip: 0.0
+          p_fix_bb: 0.0
+          p_fix_all: 1.0
+          name_override: motif_scaffold_unindexed_voronoi
+          multi_motif_se3: true
+          multi_motif_se3_trans_std: 14.0
+          motif_t_lock: 0.5
+          cluster_target_res: 32
+          cluster_max_res: 40
+          p_catalytic: 0.35
+          catalytic_min_res: 3
+          catalytic_max_res: 5
+          catalytic_max_ca_dist: 11.0
+          catalytic_distance_temperature: 3.5
+          catalytic_min_cluster_segments: 2
+          structural_keep_fraction_min: 0.4
+          structural_keep_fraction_max: 0.75
+          min_motif_groups: 2
+          max_motif_groups: 10
+          p_motif_cluster: 0.8
+          min_cluster_sequence_contacts: 1

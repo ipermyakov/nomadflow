@@ -1,0 +1,1 @@
+all files in here either originate or are modified version of files from openfold: https://github.com/aqlaboratory/openfold

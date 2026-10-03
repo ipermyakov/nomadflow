@@ -1,0 +1,355 @@
+# Vanilla contig fixation for proteinzen-main baseline sampling.
+# motif_groups is annotation-only (no multi_motif_se3): used for per-group metrics.
+# Multi-segment tasks use per-contig-segment groups; catalytic extensions keep
+# catalytic residues in one group and each added segment as its own group.
+# Alternate partitions (1BCF_2grp / 5YUI_2grp) are not duplicated here —
+# re-annotate the same samples post-hoc if needed.
+tasks:
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1PRW.pdb
+  pdb_contigs: "A16-35,A52-71"
+  motif_groups: [["A16-35"], ["A52-71"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "60-150"
+  name: 1PRW
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1BCF.pdb
+  pdb_contigs: "A92-99,A123-130,A47-54,A18-25"
+  motif_groups: [["A92-99"], ["A123-130"], ["A47-54"], ["A18-25"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "96-152"
+  name: 1BCF
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5TPN.pdb
+  pdb_contigs: "A163-181"
+  motif_groups: [["A163-181"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "50-75"
+  name: 5TPN
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5IUS.pdb
+  pdb_contigs: "A119-140,A63-82"
+  motif_groups: [["A119-140"], ["A63-82"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "57-142"
+  name: 5IUS
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/3IXT.pdb
+  pdb_contigs: "P254-277"
+  motif_groups: [["P254-277"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "50-75"
+  name: 3IXT
+  sample_chain_name: P
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5YUI.pdb
+  pdb_contigs: "A93-97,A118-120,A198-200"
+  motif_groups: [["A93-97"], ["A118-120"], ["A198-200"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "50-100"
+  name: 5YUI
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1QJG.pdb
+  pdb_contigs: "A38,A14,A99"
+  motif_groups: [["A38", "A14", "A99"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "53-103"
+  name: 1QJG
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1QJG.pdb
+  pdb_contigs: "A14,A38,A99"
+  motif_groups: [["A14", "A38", "A99"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "53-103"
+  name: 1QJG_NAT
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1YCR.pdb
+  pdb_contigs: "B19-27"
+  motif_groups: [["B19-27"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "40-100"
+  name: 1YCR
+  sample_chain_name: B
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/2KL8.pdb
+  pdb_contigs: "A1-7,A28-79"
+  motif_groups: [["A1-7"], ["A28-79"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "79"
+  name: 2KL8
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/7MRX.pdb
+  pdb_contigs: "B25-46"
+  motif_groups: [["B25-46"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "60"
+  name: 7MRX_60
+  sample_chain_name: B
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/7MRX.pdb
+  pdb_contigs: "B25-46"
+  motif_groups: [["B25-46"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "85"
+  name: 7MRX_85
+  sample_chain_name: B
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/7MRX.pdb
+  pdb_contigs: "B25-46"
+  motif_groups: [["B25-46"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "128"
+  name: 7MRX_128
+  sample_chain_name: B
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/4JHW.pdb
+  pdb_contigs: "F196-212,F63-69"
+  motif_groups: [["F196-212"], ["F63-69"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "60-90"
+  name: 4JHW
+  sample_chain_name: F
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/4ZYP.pdb
+  pdb_contigs: "A422-436"
+  motif_groups: [["A422-436"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "30-50"
+  name: 4ZYP
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5WN9.pdb
+  pdb_contigs: "A170-189"
+  motif_groups: [["A170-189"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "35-50"
+  name: 5WN9
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5TRV.pdb
+  pdb_contigs: "A45-65"
+  motif_groups: [["A45-65"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "56"
+  name: 5TRV_short
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5TRV.pdb
+  pdb_contigs: "A45-65"
+  motif_groups: [["A45-65"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "86"
+  name: 5TRV_med
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5TRV.pdb
+  pdb_contigs: "A45-65"
+  motif_groups: [["A45-65"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "116"
+  name: 5TRV_long
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/6E6R.pdb
+  pdb_contigs: "A23-35"
+  motif_groups: [["A23-35"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "48"
+  name: 6E6R_short
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/6E6R.pdb
+  pdb_contigs: "A23-35"
+  motif_groups: [["A23-35"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "78"
+  name: 6E6R_med
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/6E6R.pdb
+  pdb_contigs: "A23-35"
+  motif_groups: [["A23-35"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "108"
+  name: 6E6R_long
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: "A1051,A2083,A2110"
+  motif_groups: [["A1051", "A2083", "A2110"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "230-270"
+  name: 5AOU
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: "A1051,A2083,A2110,A2180"
+  motif_groups: [["A1051", "A2083", "A2110", "A2180"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "230-270"
+  name: 5AOU_QUAD
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/7K4V.pdb
+  pdb_contigs: "A44,A50,A127"
+  motif_groups: [["A44", "A50", "A127"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "280-320"
+  name: 7K4V
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/6VW1.pdb
+  pdb_contigs: "A24-42,A64-82"
+  motif_groups: [["A24-42"], ["A64-82"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "62-83"
+  name: 6VW1
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1QJG.pdb
+  pdb_contigs: "A38,A14,A99,A22-31"
+  motif_groups: [["A38", "A14", "A99"], ["A22-31"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "63-113"
+  name: 1QJG_ext10
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1QJG.pdb
+  pdb_contigs: "A38,A14,A99,A22-31,A103-112"
+  motif_groups: [["A38", "A14", "A99"], ["A22-31"], ["A103-112"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "73-123"
+  name: 1QJG_ext2x10
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1QJG.pdb
+  pdb_contigs: "A38,A14,A99,A66-81"
+  motif_groups: [["A38", "A14", "A99"], ["A66-81"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "73-123"
+  name: 1QJG_ext16
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: "A1051,A2083,A2110,A1013-1022"
+  motif_groups: [["A1051", "A2083", "A2110"], ["A1013-1022"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "240-280"
+  name: 5AOU_ext10
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: "A1051,A2083,A2110,A1013-1022,A2068-2077"
+  motif_groups: [["A1051", "A2083", "A2110"], ["A1013-1022"], ["A2068-2077"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "250-290"
+  name: 5AOU_ext2x10
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: "A1051,A2083,A2110,A2111-2130"
+  motif_groups: [["A1051", "A2083", "A2110"], ["A2111-2130"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "250-290"
+  name: 5AOU_ext20
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: "A1051,A2083,A2110,A2180,A1013-1022"
+  motif_groups: [["A1051", "A2083", "A2110", "A2180"], ["A1013-1022"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "240-280"
+  name: 5AOU_QUAD_ext10
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: "A1051,A2083,A2110,A2180,A1013-1022,A2068-2077"
+  motif_groups: [["A1051", "A2083", "A2110", "A2180"], ["A1013-1022"], ["A2068-2077"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "250-290"
+  name: 5AOU_QUAD_ext2x10
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/5AOU.pdb
+  pdb_contigs: "A1051,A2083,A2110,A2180,A2111-2130"
+  motif_groups: [["A1051", "A2083", "A2110", "A2180"], ["A2111-2130"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "250-290"
+  name: 5AOU_QUAD_ext20
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/7K4V.pdb
+  pdb_contigs: "A44,A50,A127,A61-70"
+  motif_groups: [["A44", "A50", "A127"], ["A61-70"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "290-330"
+  name: 7K4V_ext10
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/7K4V.pdb
+  pdb_contigs: "A44,A50,A127,A61-70,A82-91"
+  motif_groups: [["A44", "A50", "A127"], ["A61-70"], ["A82-91"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "300-340"
+  name: 7K4V_ext2x10
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/7K4V.pdb
+  pdb_contigs: "A44,A50,A127,A61-80"
+  motif_groups: [["A44", "A50", "A127"], ["A61-80"]]
+  # redesign_contigs: : 
+  contigs_idx: ""
+  num_samples: 200
+  total_length: "300-340"
+  name: 7K4V_ext20

@@ -1,0 +1,18 @@
+# Single-task public example: 1QJG catalytic site with +10 residues (ext10).
+# Copied from configs/sampling/protpardelle_motif_scaffolding/config_multi_motif_se3_catalytic_tlock_0.5.yaml
+# (task name: 1QJG_ext10). num_samples set to 1 for a quick smoke run.
+tasks:
+- task: motif_scaffolding
+  pdb: configs/sampling/protpardelle_motif_scaffolding/pdbs/1QJG.pdb
+  pdb_contigs: A38,A14,A99,A22-31
+  motif_groups: [["A38", "A14", "A99"], ["A22-31"]]
+  contigs_idx: ''
+  num_samples: 1
+  total_length: 63-113
+  name: 1QJG_ext10
+  multi_motif_se3: true
+  motif_rigid_mode: rigid_group_diffuse
+  multi_motif_partition_mode: fragments
+  multi_motif_max_groups: 8
+  multi_motif_se3_trans_std: 12
+  motif_t_lock: 0.5
