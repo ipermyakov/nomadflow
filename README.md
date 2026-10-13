@@ -3,7 +3,7 @@ NomadFlow
 
 NomadFlow generates an all-atom protein scaffold around several functional motifs at once. Each motif group is its own rigid body, so the model samples the scaffold together with the relative placement of the groups.
 
-Preprint: link forthcoming.
+Preprint: ["NomadFlow: unindexed multi-motif scaffolding with independently mobile rigid groups"](https://doi.org/10.64898/2026.10.01.754115).
 
 The code extends [ProteinZen](https://github.com/alexjli/proteinzen), the all-atom SE(3) flow-matching model from ["All-atom protein generation via SE(3) flow matching with ProteinZen"](https://www.biorxiv.org/content/10.1101/2025.10.18.683228v1).
 
